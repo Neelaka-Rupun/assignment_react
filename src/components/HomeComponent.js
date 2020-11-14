@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './HeaderComponenet';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import ViewDistance from './ViewDistance';
 import NotNeighbourComponent from './NotNeighbourComponent';
 import CountrySearch from './CountrySearch';
@@ -41,7 +41,7 @@ class HomeComponent extends Component {
                     <Route path="/closestCountry" component={()=><NotNeighbourComponent countries ={this.state.countries}/>} />
                     <Route path="/countrySearch" component={()=><CountrySearch countries ={this.state.countries}/>} />
                     <Route path="/timeZone" component={()=><SerachCountry countries ={this.state.countries}/>} />
-
+                   
             </Switch>
             </>
         );

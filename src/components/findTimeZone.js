@@ -10,7 +10,8 @@ const isNumber = (value) => isNaN(Number(value));
 
 class findTimeZone extends Component {
     render() {
-        // let showCountry = <div>Please enter two separate time zone</div>
+        let showCountry = <div>Please enter two separate time zone</div>
+        
         return (
             <div className="container">
                 <div className="col-12 col-md-9">
@@ -66,7 +67,7 @@ class findTimeZone extends Component {
                         <Button type="submit" value="submit">Find Distance</Button>
                         <Row>
                             <Col>
-                                <strong>abc</strong>
+                                <strong>{showCountry}</strong>
                             </Col>
                         </Row>
                     </LocalForm>

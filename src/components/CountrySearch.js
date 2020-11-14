@@ -21,14 +21,12 @@ class CountrySearch extends Component {
 
     getCountryName(value) {
         let country = value.countryName.toUpperCase();
-        console.log(country);
         this.findCountry(country);
     }
 
     findCountry(value) {
         let data = null;
         data = this.props.countries.map(country => country.name).filter(name => name.toUpperCase().includes(value.toUpperCase()));
-        console.log(data)
         if (data.length > 0) {
             this.setState({
                 serachResult: data

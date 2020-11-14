@@ -3,6 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button, Mod
 
 import { NavLink } from 'react-router-dom';
 
+let counter = 0 ;
 class HeaderComponenet extends Component {
 
 
@@ -33,17 +34,23 @@ class HeaderComponenet extends Component {
 
     handleLogin(event) {
         this.toggleModal();
-        if (this.username.value === 'rneelaka@gamil.com' && this.password.value === '123456') {
-            this.setState({
-                isAuth: true
-            });
+         counter += 1 ;
+            if(counter<3){
+                if (this.username.value === 'rneelaka@gamil.com' && this.password.value === '123456') {
+                    this.setState({
+                        isAuth: true
+                    });
+            }else {
+                alert("Your maximum attemept reached!")
+            } 
+            
         }
         event.preventDefault();
     }
 
-     componentDidUpdate() {
-         console.log(this.state.isAuth)
-     }
+    //  componentDidUpdate() {
+    //      console.log(this.state.isAuth)
+    //  }
 
     render() {
 

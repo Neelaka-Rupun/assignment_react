@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Button, Col, Label, Row } from 'reactstrap';
-// import { Table } from 'reactstrap';
+import './ComponentView.css';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -35,35 +35,21 @@ class CountrySearch extends Component {
     }
 
 
-
     render() {
 
         let serachResult = <div>Please eneter the two charactors to see the countries</div>
         if (this.state.serachResult) {
-            serachResult = <div>{this.state.serachResult}</div>
-            // let resultCount = this.state.serachResult.length;
-            //     this.state.serachResult.forEach(country => {
-            //         let count = 0;
-            //         count +=1;
-            //         serachResult = ( 
-            //         <div>
-            //             <br/>
-            //         <Table>
-            //             <thead>
-            //               <tr>
-            //                 <th>#</th>
-            //                 <th>Country Name</th>
-            //               </tr>
-            //             </thead>
-            //             <tbody>
-            //               <tr>
-            //                 <th scope="row">{count}</th>
-            //                 <td>{country}</td>
-            //               </tr>
-            //             </tbody>
-            //           </Table>
-            //           </div>)
-            //     })
+            serachResult = <div> 
+                {this.state.serachResult.map((item,index) =>{
+                    return (
+                        <span key={index}>
+                            <p >{item}</p>
+                            <hr/>
+                        </span>
+                        
+                    )
+                })}
+                </div>
         }
         return (
             <div className="container">
@@ -96,6 +82,7 @@ class CountrySearch extends Component {
                         <Button type="submit" value="submit">Find Country</Button>
                         <Row>
                             <Col>
+                            <br/>
                                 <strong>{serachResult}</strong>
                             </Col>
                         </Row>

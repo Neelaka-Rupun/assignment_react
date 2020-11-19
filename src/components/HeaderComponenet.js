@@ -3,9 +3,8 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button, Mod
 
 import { NavLink } from 'react-router-dom';
 
-let counter = 0 ;
+let counter = 0;
 class HeaderComponenet extends Component {
-
 
 
     constructor(props) {
@@ -13,7 +12,7 @@ class HeaderComponenet extends Component {
         this.state = {
             isNavOpen: false,
             isModalOpen: false,
-            isAuth: false
+            isAuth: true
         };
 
         this.toggleNav = this.toggleNav.bind(this);
@@ -34,23 +33,20 @@ class HeaderComponenet extends Component {
 
     handleLogin(event) {
         this.toggleModal();
-         counter += 1 ;
-            if(counter<3){
-                if (this.username.value === 'rneelaka@gamil.com' && this.password.value === '123456') {
-                    this.setState({
-                        isAuth: true
-                    });
-            }else {
+        counter += 1;
+        if (counter < 3) {
+            if (this.username.value === 'rneelaka@gamil.com' && this.password.value === '123456') {
+                this.setState({
+                    isAuth: true
+                });
+            } else {
                 alert("Your maximum attemept reached!")
-            } 
-            
+            }
+
         }
         event.preventDefault();
     }
 
-    //  componentDidUpdate() {
-    //      console.log(this.state.isAuth)
-    //  }
 
     render() {
 

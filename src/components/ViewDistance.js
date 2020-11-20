@@ -11,6 +11,7 @@ const isNumber = (value) => isNaN(Number(value));
 class ViewDistance extends Component {
 
     distanceFind = (values) => {
+        values.preventDefault();
         let conuntry1 = values.countryCode1.toUpperCase();
         let conuntry2 = values.countryCode2.toUpperCase();
         let countires = this.props.countries
@@ -19,7 +20,6 @@ class ViewDistance extends Component {
 
     render() {
 
-        // console.log(this.state.distnase)
         let DistanceView = <div>Please enter Country codes to see the Diestance</div>
 
         if (this.props.distnase > 0) {

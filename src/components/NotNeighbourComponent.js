@@ -10,6 +10,7 @@ const isNumber = (value) => isNaN(Number(value));
 export class NotNeighbourComponent extends Component {
 
      closeCountryFindHandler = (values) => {
+        values.preventDefault();
         let countryCode = values.CountryName.toUpperCase();
         const countries = this.props.countries;
         this.props.closeCountryFind(countryCode, countries);

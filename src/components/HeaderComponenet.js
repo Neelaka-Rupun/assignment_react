@@ -11,8 +11,7 @@ class HeaderComponenet extends Component {
         super(props);
         this.state = {
             isNavOpen: false,
-            isModalOpen: false,
-            isAuth: true
+            isModalOpen: false
         };
 
         this.toggleNav = this.toggleNav.bind(this);
@@ -33,25 +32,15 @@ class HeaderComponenet extends Component {
 
     handleLogin(event) {
         this.toggleModal();
-        counter += 1;
-        if (counter < 3) {
-            if (this.username.value === 'rneelaka@gamil.com' && this.password.value === '123456') {
-                this.setState({
-                    isAuth: true
-                });
-            } else {
-                alert("Your maximum attemept reached!")
-            }
-
-        }
+        this.props.isAuth(this.username.value, this.password.value);
         event.preventDefault();
     }
 
 
     render() {
-
+        console.log(this.props.authStatus)
         const NavShow = () => {
-            if (this.state.isAuth) {
+            if (this.props.authStatus) {
                 return (
                     <Nav navbar>
                         <NavItem>

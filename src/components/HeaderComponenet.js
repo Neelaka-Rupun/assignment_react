@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 let counter = 0;
 class HeaderComponenet extends Component {
@@ -31,13 +31,26 @@ class HeaderComponenet extends Component {
     }
 
     handleLogin(event) {
+        counter += 1;
         this.toggleModal();
-        this.props.isAuth(this.username.value, this.password.value);
+        this.props.isAuth(this.username.value, this.password.value, counter);
         event.preventDefault();
     }
-
+    counter
 
     render() {
+
+
+        if (this.props.maxAtempt) {
+            alert('Please find an Supervisor the maximum attempts reaced');
+            return (
+            <div>
+                <Redirect to="/" />
+            </div>
+    
+          )
+        }
+
         console.log(this.props.authStatus)
         const NavShow = () => {
             if (this.props.authStatus) {

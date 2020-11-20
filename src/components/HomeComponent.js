@@ -6,7 +6,7 @@ import NotNeighbourComponent from './NotNeighbourComponent';
 import CountrySearch from './CountrySearch';
 import SerachCountry from './findTimeZone';
 import {connect } from 'react-redux';
-import * as actions  from '../store/auth';
+import * as actionCreators from '../store/actions/actionCreators';
 
 class HomeComponent extends Component {
 
@@ -39,7 +39,7 @@ class HomeComponent extends Component {
 
         return (
             <>
-                <Header isAuth={this.props.onAuth} authStatus={this.props.authenticated}  />  
+                <Header isAuth={this.props.onAuth} authStatus={this.props.authenticated} maxAtempt ={this.props.maxAttempts} />  
                 <Switch>
                     {this.props.authenticated ?  <div><Route path="/checkDistance" component={() => <ViewDistance countries={this.state.countries}  distanceFind={this.props.onDistanceFinder}  distnase= {this.props.distnase}/>} />
                     <Route path="/closestCountry" component={() => <NotNeighbourComponent countries={this.state.countries} closeCountryFind={this.props.onCloseCountryFinder} closeCountryNotNeighbour ={this.props.closeCountiry} />} />
@@ -56,17 +56,17 @@ const mapStateToProps = state => {
     return {
         auth: state.auth,
         distnase : state.distnase,
-        authenticated: state.authenticated !== null
+        closeCountiry: state.closeCountiry,
+        authenticated: state.authenticated !== null,
+        maxAttempts: state.maxAttempts !== false
     };
 }
 
 const mapDispatchToProps = dispatch => {
-
     return {
-        onDistanceFinder: (country1, country2, countries) => dispatch({type: 'FIND_DISTSNCE', payload:{ country1:country1, country2: country2, countries: countries }}),
-        onCloseCountryFinder: (country1, countries) => dispatch({type: 'CLOSE_COUNTRY', payload:{ country1:country1, countries: countries }}),
-        onCountryFinder: (data) => dispatch({type: 'COUNTRY_SEARCH', charactors: data}),
-        onAuth: (email, password) =>  dispatch({type: 'AUTH_START', payload: { email: email, password: password}}),
+        onDistanceFinder: (country1, country2, countries) => dispatch(actionCreators.findDistance(country1, country2, countries)),
+        onCloseCountryFinder: (country1, countries) => dispatch(actionCreators.closeCountry(country1, countries)),
+        onAuth: (email, password, counter) =>  dispatch(actionCreators.authStart(email, password, counter))
     };
 }
  

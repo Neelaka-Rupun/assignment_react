@@ -1,4 +1,4 @@
- export const distanceFindHandler = (value1, vlaue2, countires) =>{
+export const distanceFindHandler = (value1, vlaue2, countires) => {
     let conuntry1 = value1;
     let conuntry2 = vlaue2;
     let lat1 = null;
@@ -19,7 +19,7 @@
     // console.log(lat1,lat2, long1, long2);
     if (lat1 && lat2 && long1 && long2) {
         const distnase = distance(lat1, long1, lat2, long2, "K");
-       return distnase;
+        return distnase;
     }
     return distnase;
 }

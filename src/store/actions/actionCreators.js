@@ -17,7 +17,7 @@ export const closeCountry = (country1, countries) => {
 
 export const  authStart = (email, password, counter)  => {
     return {
-        type: actionTypes.AUTH_START,
+        type: actionTypes.AUTH_USER,
         payload:{email: email, password: password, counter: counter}
     }
 }

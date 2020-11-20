@@ -26,15 +26,13 @@ const reducer = (state = inintialState, action) => {
                 closeCountiry: colseCountry
             }
         case actionTypes.AUTH_START:
-
-            if(action.payload.email==='rneelaka@gamil.com' && action.payload.password === '123456' && action.payload.counter <= 3){
-                console.log(action)
+            
+            if (action.payload.email === 'rneelaka@gamil.com' && action.payload.password === '123456' && action.payload.counter <= 3) {
                 return {
                     ...state,
                     authenticated: true
                 }
-            } else if( action.payload.counter > 3 ){
-                console.log(action) ;
+            } else if (action.payload.counter > 3) {
                 return {
                     ...state,
                     authenticated: null,

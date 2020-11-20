@@ -6,18 +6,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga'
 import reducer from './store/reducers/reducer';
 import thunk from 'redux-thunk';
+import { watchAuth } from './store/saga/rootSaga'
 
 
-
+const sagaMiddleware = createSagaMiddleware();
 
 const composeEnhanscers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
-
-
+sagaMiddleware.run(watchAuth);
 
 
 ReactDOM.render(
